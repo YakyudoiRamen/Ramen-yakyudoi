@@ -1,0 +1,875 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yakyudoi Ramen | Profil Perusahaan</title>
+
+    <style>
+        :root {
+            --red: #c62828;
+            --dark-red: #8e1717;
+            --black: #171717;
+            --cream: #fff8ed;
+            --white: #ffffff;
+            --gray: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--cream);
+            color: var(--black);
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        header {
+            background: rgba(23, 23, 23, 0.97);
+            color: white;
+            padding: 16px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: #ff5252;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 13px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff5252;
+        }
+
+        .hero {
+            min-height: 570px;
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            color: white;
+            background:
+                linear-gradient(90deg,
+                    rgba(0,0,0,0.90),
+                    rgba(0,0,0,0.45)),
+                url("https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=1800&q=85")
+                center/cover no-repeat;
+        }
+
+        .hero-content {
+            max-width: 680px;
+        }
+
+        .tagline {
+            color: #ff7777;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 76px);
+            line-height: 1.1;
+            margin: 18px 0;
+        }
+
+        .hero h1 span {
+            color: #ff5252;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #eeeeee;
+            margin-bottom: 30px;
+            max-width: 560px;
+        }
+
+        .button {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 13px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            background: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        section {
+            padding: 75px 8%;
+            scroll-margin-top: 80px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading .subtitle {
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .section-heading h2 {
+            font-size: clamp(27px, 4vw, 38px);
+            margin: 8px 0;
+        }
+
+        .section-heading p {
+            color: var(--gray);
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .about-text h3 {
+            font-size: 26px;
+            margin-bottom: 15px;
+        }
+
+        .about-text p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            padding: 9px 0;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .info-list strong {
+            display: inline-block;
+            min-width: 145px;
+        }
+
+        .vision-mission {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 4px solid var(--red);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .feature-card h3 {
+            font-size: 23px;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p,
+        .feature-card li {
+            color: var(--gray);
+        }
+
+        .feature-card ol {
+            padding-left: 22px;
+        }
+
+        .products {
+            background: white;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--cream);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .product-info p {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .dark-section {
+            background: var(--black);
+            color: white;
+        }
+
+        .dark-section .section-heading p {
+            color: #cccccc;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-item {
+            padding: 25px;
+            border: 1px solid #444444;
+            border-radius: 10px;
+            background: #222222;
+        }
+
+        .feature-item .number {
+            font-size: 30px;
+            color: #ff5252;
+            font-weight: bold;
+        }
+
+        .feature-item h3 {
+            margin: 10px 0;
+        }
+
+        .feature-item p {
+            color: #cccccc;
+            font-size: 14px;
+        }
+
+        .organization {
+            background: white;
+        }
+
+        .org-chart {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .org-box {
+            background: var(--black);
+            color: white;
+            padding: 18px;
+            margin: auto;
+            max-width: 310px;
+            border-radius: 8px;
+            border-bottom: 4px solid var(--red);
+        }
+
+        .org-box small {
+            display: block;
+            color: #ffaaaa;
+            margin-top: 5px;
+        }
+
+        .org-line {
+            height: 35px;
+            width: 2px;
+            background: var(--red);
+            margin: auto;
+        }
+
+        .org-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .org-grid .org-box {
+            width: 100%;
+            padding: 17px 10px;
+            background: #333333;
+        }
+
+        .closing {
+            text-align: center;
+            background: #f7e9d7;
+        }
+
+        .closing p {
+            max-width: 760px;
+            margin: 0 auto 25px;
+            color: var(--gray);
+        }
+
+        .contact {
+            background: var(--red);
+            color: white;
+            text-align: center;
+        }
+
+        .contact p {
+            margin: 8px 0;
+        }
+
+        .contact a {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: #111111;
+            color: #bbbbbb;
+            text-align: center;
+            padding: 22px;
+            font-size: 13px;
+        }
+
+        .note {
+            color: var(--gray);
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 850px) {
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                justify-content: center;
+                gap: 12px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid,
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 580px) {
+            section {
+                padding: 55px 6%;
+            }
+
+            .hero {
+                min-height: 480px;
+                padding: 60px 6%;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .vision-mission,
+            .product-grid,
+            .feature-grid,
+            .org-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .info-list strong {
+                min-width: 0;
+                display: block;
+            }
+
+            .about-image img {
+                height: 270px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#beranda" class="logo">
+            YAKYUDOI <span>RAMEN</span>
+        </a>
+
+        <nav aria-label="Navigasi utama">
+            <a href="#beranda">Beranda</a>
+            <a href="#profil">Profil</a>
+            <a href="#visi-misi">Visi & Misi</a>
+            <a href="#produk">Produk</a>
+            <a href="#keunggulan">Keunggulan</a>
+            <a href="#organisasi">Organisasi</a>
+            <a href="#kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="beranda">
+        <div class="hero-content">
+            <div class="tagline">Japanese Culinary Experience</div>
+            <h1>Discover the Art of <span>Ramen.</span></h1>
+            <p>
+                Menikmati kelezatan ramen dengan inspirasi budaya Jepang,
+                kualitas bahan, dan pengalaman bersantap yang berkesan.
+            </p>
+            <a href="#profil" class="button">Jelajahi Profil Kami</a>
+        </div>
+    </section>
+
+    <!-- PROFIL PERUSAHAAN -->
+    <section class="about" id="profil">
+        <div class="section-heading">
+            <div class="subtitle">Tentang Kami</div>
+            <h2>Profil Perusahaan</h2>
+            <p>Mengenal identitas dan konsep usaha Yakyudoi Ramen.</p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-image">
+                <img
+                    src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&w=1000&q=85"
+                    alt="Hidangan ramen Jepang"
+                    loading="lazy">
+            </div>
+
+            <div class="about-text">
+                <h3>Yakyudoi Ramen</h3>
+                <p>
+                    Yakyudoi Ramen merupakan konsep perusahaan kuliner yang
+                    bergerak di bidang makanan Jepang dengan ramen sebagai
+                    produk utamanya. Kami mengusung perpaduan cita rasa,
+                    kualitas bahan, dan suasana restoran yang terinspirasi
+                    dari budaya Jepang.
+                </p>
+                <p>
+                    Dengan mengadaptasi konsep kuliner Jepang untuk selera
+                    masyarakat Indonesia, Yakyudoi Ramen dirancang untuk
+                    menghadirkan hidangan yang menarik, pelayanan ramah,
+                    dan suasana bersantap yang nyaman serta modern.
+                </p>
+
+                <ul class="info-list">
+                    <li><strong>Nama:</strong> Yakyudoi Ramen</li>
+                    <li><strong>Bidang Usaha:</strong> Kuliner dan Restoran</li>
+                    <li><strong>Jenis Usaha:</strong> Restoran Ramen Jepang</li>
+                    <li><strong>Produk Utama:</strong> Ramen dan hidangan Jepang</li>
+                    <li><strong>Email:</strong>
+                        <a href="mailto:yakyudoiramen@gmail.com">
+                            yakyudoiramen@gmail.com
+                        </a>
+                    </li>
+                    <li><strong>Lokasi Konsep:</strong> Tokyo, Jepang</li>
+                    <li><strong>Tahun Berdiri:</strong> 1987</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- VISI DAN MISI -->
+    <section id="visi-misi">
+        <div class="section-heading">
+            <div class="subtitle">Arah Perusahaan</div>
+            <h2>Visi dan Misi</h2>
+            <p>Landasan untuk mengembangkan usaha kuliner yang berkualitas.</p>
+        </div>
+
+        <div class="vision-mission">
+            <div class="feature-card">
+                <h3>Visi Perusahaan</h3>
+                <p>
+                    Menjadi perusahaan kuliner Jepang yang inovatif,
+                    berkualitas, dan mampu memberikan pengalaman bersantap
+                    yang berkesan bagi masyarakat Indonesia.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Misi Perusahaan</h3>
+                <ol>
+                    <li>Menyajikan ramen dengan cita rasa khas dan kualitas terjaga.</li>
+                    <li>Menggunakan bahan baku sesuai standar kebersihan dan keamanan pangan.</li>
+                    <li>Mengembangkan variasi menu sesuai kebutuhan konsumen.</li>
+                    <li>Memberikan pelayanan ramah, cepat, dan profesional.</li>
+                    <li>Menciptakan restoran nyaman dengan sentuhan budaya Jepang.</li>
+                    <li>Mengembangkan usaha melalui inovasi dan pemasaran digital.</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRODUK -->
+    <section class="products" id="produk">
+        <div class="section-heading">
+            <div class="subtitle">Menu Pilihan</div>
+            <h2>Produk Kami</h2>
+            <p>
+                Inspirasi menu yang dirancang untuk memberikan pengalaman
+                kuliner Jepang yang beragam.
+            </p>
+        </div>
+
+        <div class="product-grid">
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=800&q=80"
+                    alt="Shoyu ramen"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Shoyu Ramen</h3>
+                    <p>Ramen dengan kuah berbasis kecap Jepang yang gurih.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1557872943-16a5ac26437e?auto=format&fit=crop&w=800&q=80"
+                    alt="Miso ramen"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Miso Ramen</h3>
+                    <p>Ramen dengan kuah berbahan miso yang kaya rasa.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1569058242253-92a9c755a0ec?auto=format&fit=crop&w=800&q=80"
+                    alt="Ramen pedas"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Spicy Ramen</h3>
+                    <p>Ramen dengan sensasi pedas bagi pencinta rasa kuat.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=800&q=80"
+                    alt="Chicken katsu"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Chicken Katsu</h3>
+                    <p>Hidangan ayam berlapis tepung roti yang renyah.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80"
+                    alt="Gyoza"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Gyoza</h3>
+                    <p>Pangsit khas Jepang dengan isian yang gurih.</p>
+                </div>
+            </article>
+
+            <article class="product-card">
+                <img
+                    src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80"
+                    alt="Teh hijau"
+                    loading="lazy">
+                <div class="product-info">
+                    <h3>Ocha</h3>
+                    <p>Teh hijau sebagai minuman pendamping hidangan Jepang.</p>
+                </div>
+            </article>
+
+        </div>
+
+        <p class="note">
+            Catatan: Menu di atas merupakan usulan untuk konsep perusahaan,
+            bukan daftar produk aktual yang telah terverifikasi.
+            Foto produk merupakan ilustrasi.
+        </p>
+    </section>
+
+    <!-- KEUNGGULAN DAN TARGET PASAR -->
+    <section class="dark-section" id="keunggulan">
+        <div class="section-heading">
+            <div class="subtitle">Nilai Perusahaan</div>
+            <h2>Keunikan dan Target Pasar</h2>
+            <p>
+                Menggabungkan inspirasi tradisional Jepang dengan kebutuhan
+                konsumen modern.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="number">01</div>
+                <h3>Cita Rasa Jepang</h3>
+                <p>
+                    Mengembangkan pilihan kuah, tingkat kepedasan, dan
+                    kombinasi menu yang menarik.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="number">02</div>
+                <h3>Suasana Modern</h3>
+                <p>
+                    Menghadirkan identitas visual Jepang dan lingkungan
+                    bersantap yang nyaman.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="number">03</div>
+                <h3>Layanan Digital</h3>
+                <p>
+                    Memanfaatkan pemesanan digital, promosi online,
+                    dan program loyalitas pelanggan.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="number">04</div>
+                <h3>Pelajar dan Mahasiswa</h3>
+                <p>
+                    Menjangkau konsumen muda yang tertarik pada kuliner
+                    dan budaya populer Jepang.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="number">05</div>
+                <h3>Pekerja dan Keluarga</h3>
+                <p>
+                    Menawarkan konsep makanan praktis untuk individu,
+                    keluarga, dan kelompok pertemanan.
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="number">06</div>
+                <h3>Pemasaran Kreatif</h3>
+                <p>
+                    Menggunakan konten media sosial, paket menu,
+                    dan promosi tematik untuk menjangkau konsumen.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRATEGI PEMASARAN -->
+    <section>
+        <div class="section-heading">
+            <div class="subtitle">Pengembangan Usaha</div>
+            <h2>Strategi Pemasaran</h2>
+            <p>
+                Pendekatan pemasaran yang direncanakan untuk meningkatkan
+                jangkauan dan membangun hubungan dengan pelanggan.
+            </p>
+        </div>
+
+        <div class="vision-mission">
+            <div class="feature-card">
+                <h3>Promosi Digital</h3>
+                <p>
+                    Memanfaatkan Instagram, TikTok, dan platform digital
+                    lainnya melalui foto produk, video proses memasak,
+                    serta konten bertema budaya Jepang.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Program Penjualan</h3>
+                <p>
+                    Mengembangkan paket menu hemat, program loyalitas,
+                    promosi musiman, dan kerja sama dengan layanan
+                    pesan antar makanan.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRUKTUR ORGANISASI -->
+    <section class="organization" id="organisasi">
+        <div class="section-heading">
+            <div class="subtitle">Manajemen Perusahaan</div>
+            <h2>Struktur Organisasi</h2>
+            <p>
+                Susunan jabatan yang direncanakan untuk mendukung
+                operasional Yakyudoi Ramen.
+            </p>
+        </div>
+
+        <div class="org-chart">
+            <div class="org-box">
+                <strong>Pemilik / Direktur</strong>
+                <small>Arah dan pengembangan usaha</small>
+            </div>
+
+            <div class="org-line"></div>
+
+            <div class="org-box">
+                <strong>Manajer Operasional</strong>
+                <small>Koordinasi kegiatan restoran</small>
+            </div>
+
+            <div class="org-line"></div>
+
+            <div class="org-grid">
+                <div class="org-box">
+                    <strong>Bagian Dapur</strong>
+                    <small>Produksi dan kualitas makanan</small>
+                </div>
+
+                <div class="org-box">
+                    <strong>Bagian Pelayanan</strong>
+                    <small>Layanan dan pesanan pelanggan</small>
+                </div>
+
+                <div class="org-box">
+                    <strong>Bagian Pemasaran</strong>
+                    <small>Promosi dan media sosial</small>
+                </div>
+
+                <div class="org-box">
+                    <strong>Keuangan</strong>
+                    <small>Pencatatan transaksi</small>
+                </div>
+
+                <div class="org-box">
+                    <strong>Administrasi</strong>
+                    <small>Dokumen dan administrasi usaha</small>
+                </div>
+            </div>
+        </div>
+
+        <p class="note">
+            Struktur organisasi ini merupakan rancangan yang dapat
+            disesuaikan dengan skala dan kebutuhan usaha.
+        </p>
+    </section>
+
+    <!-- PENUTUP -->
+    <section class="closing">
+        <div class="section-heading">
+            <div class="subtitle">Komitmen Kami</div>
+            <h2>Menghadirkan Pengalaman Ramen yang Berkesan</h2>
+        </div>
+
+        <p>
+            Yakyudoi Ramen merupakan konsep usaha kuliner yang berorientasi
+            pada penyajian ramen dan pengalaman bersantap bergaya Jepang.
+            Melalui pengembangan produk, pelayanan berkualitas, dan strategi
+            pemasaran yang tepat, konsep ini diharapkan dapat memenuhi
+            kebutuhan pasar kuliner modern.
+        </p>
+
+        <a href="#kontak" class="button">Hubungi Kami</a>
+    </section>
+
+    <!-- KONTAK -->
+    <section class="contact" id="kontak">
+        <div class="section-heading">
+            <div class="subtitle" style="color:#ffcccc;">Informasi Kontak</div>
+            <h2>Terhubung dengan Yakyudoi Ramen</h2>
+            <p style="color:#ffffff;">
+                Untuk pertanyaan dan informasi lebih lanjut, silakan hubungi
+                kami melalui email.
+            </p>
+        </div>
+
+        <p><strong>Email:</strong>
+            <a href="mailto:yakyudoiramen@gmail.com">
+                yakyudoiramen@gmail.com
+            </a>
+        </p>
+
+        <p><strong>Lokasi konsep:</strong> Tokyo, Jepang</p>
+        <p><strong>Tagline:</strong> Japanese Culinary Experience</p>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            &copy; <span id="year"></span> Yakyudoi Ramen.
+            Japanese Culinary Experience.
+        </p>
+        <p>Profil perusahaan dan rancangan konsep usaha.</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").textContent =
+            new Date().getFullYear();
+    </script>
+
+</body>
+</html>
